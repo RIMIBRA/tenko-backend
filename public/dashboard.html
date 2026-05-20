@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tenko Lodge — Dashboard Gérant</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Nunito+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      :root {
+        --forest: #1a3a2a;
+        --forest2: #2a5a40;
+        --gold: #c8922a;
+        --gold2: #e0a830;
+        --sand: #d4a96a;
+        --cream: #f7f0e3;
+        --earth: #2c1a0e;
+        --earth2: #4a3020;
+        --white: #fdfaf5;
+        --text: #2c1a0e;
+        --muted: #8a7060;
+        --light: #ede5d5;
+        --green: #1a5c2a;
+        --green2: #25d366;
+        --red: #8b1a1a;
+        --red2: #c0392b;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Nunito Sans", sans-serif;
+        background: var(--cream);
+        color: var(--text);
+        min-height: 100vh;
+      }
+
+      /* LOGIN */
+      #login-screen {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          160deg,
+          var(--forest) 0%,
+          var(--earth) 100%
+        );
+      }
+      .login-box {
+        background: rgba(253, 250, 245, 0.06);
+        border: 1px solid rgba(212, 169, 106, 0.2);
+        border-radius: 12px;
+        padding: 3rem 2.5rem;
+        width: 100%;
+        max-width: 420px;
+        backdrop-filter: blur(20px);
+      }
+      .login-logo {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.2rem;
+        color: var(--white);
+        text-align: center;
+        margin-bottom: 0.3rem;
+        letter-spacing: 0.06em;
+      }
+      .login-logo span {
+        color: var(--sand);
+      }
+      .login-sub {
+        text-align: center;
+        font-size: 0.72rem;
+        color: rgba(253, 250, 245, 0.4);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 2.5rem;
+      }
+      .lfield {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        margin-bottom: 1rem;
+      }
+      .lfield label {
+        font-size: 0.62rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(253, 250, 245, 0.45);
+        font-weight: 600;
+      }
+      .lfield input {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(212, 169, 106, 0.18);
+        color: var(--white);
+        padding: 0.85rem 1rem;
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 0.9rem;
+        border-radius: 4px;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .lfield input:focus {
+        border-color: var(--gold);
+      }
+      .lfield input::placeholder {
+        color: rgba(253, 250, 245, 0.25);
+      }
+      .login-btn {
+        width: 100%;
+        background: var(--gold);
+        color: var(--earth);
+        border: none;
+        border-radius: 4px;
+        padding: 1rem;
+        font-size: 0.82rem;
+        font-weight: 700;
+        cursor: pointer;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-top: 0.5rem;
+        transition: all 0.25s;
+        font-family: "Nunito Sans", sans-serif;
+      }
+      .login-btn:hover {
+        background: var(--gold2);
+      }
+      .login-error {
+        color: #f87171;
+        font-size: 0.78rem;
+        text-align: center;
+        margin-top: 0.8rem;
+        display: none;
+      }
+
+      /* DASHBOARD */
+      #dashboard {
+        display: none;
+      }
+
+      /* Header */
+      .dash-header {
+        background: var(--forest);
+        border-bottom: 2px solid var(--gold);
+        padding: 0 2rem;
+        height: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .dash-logo {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.4rem;
+        color: var(--white);
+        letter-spacing: 0.06em;
+      }
+      .dash-logo span {
+        color: var(--sand);
+      }
+      .dash-right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      .live-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.7rem;
+        color: var(--green2);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .live-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green2);
+        animation: pulse 1.5s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+      .last-update {
+        font-size: 0.72rem;
+        color: rgba(253, 250, 245, 0.4);
+      }
+      .logout-btn {
+        background: transparent;
+        border: 1px solid rgba(212, 169, 106, 0.3);
+        color: var(--muted);
+        padding: 0.4rem 1rem;
+        border-radius: 4px;
+        font-size: 0.72rem;
+        cursor: pointer;
+        font-family: "Nunito Sans", sans-serif;
+      }
+      .logout-btn:hover {
+        border-color: var(--gold);
+        color: var(--sand);
+      }
+
+      /* Main */
+      .dash-main {
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      /* Stats */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.2rem;
+        margin-bottom: 2rem;
+      }
+      .stat-card {
+        background: var(--white);
+        border: 1px solid rgba(212, 169, 106, 0.15);
+        border-radius: 10px;
+        padding: 1.5rem;
+        transition: all 0.2s;
+      }
+      .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(44, 26, 14, 0.08);
+      }
+      .stat-label {
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+      .stat-value {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.2rem;
+        line-height: 1;
+        margin-bottom: 0.3rem;
+      }
+      .stat-sub {
+        font-size: 0.72rem;
+        color: var(--muted);
+        font-weight: 300;
+      }
+      .sv-gold {
+        color: var(--gold);
+      }
+      .sv-green {
+        color: var(--green2);
+      }
+      .sv-blue {
+        color: #60a5fa;
+      }
+      .sv-forest {
+        color: var(--forest2);
+      }
+
+      /* Grid */
+      .dash-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      /* Panels */
+      .panel {
+        background: var(--white);
+        border: 1px solid rgba(212, 169, 106, 0.12);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 1.5rem;
+        border-bottom: 1px solid rgba(212, 169, 106, 0.1);
+      }
+      .panel-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.2rem;
+        color: var(--earth);
+        letter-spacing: 0.04em;
+      }
+      .panel-body {
+        padding: 1.2rem 1.5rem;
+      }
+      .refresh-btn {
+        background: rgba(200, 146, 42, 0.08);
+        border: 1px solid rgba(200, 146, 42, 0.2);
+        color: var(--gold);
+        padding: 0.35rem 0.9rem;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        cursor: pointer;
+        font-family: "Nunito Sans", sans-serif;
+        font-weight: 600;
+      }
+      .refresh-btn:hover {
+        background: rgba(200, 146, 42, 0.15);
+      }
+
+      /* Réservations */
+      .res-item {
+        padding: 1rem;
+        border-radius: 8px;
+        background: var(--cream);
+        border: 1px solid rgba(212, 169, 106, 0.12);
+        margin-bottom: 0.8rem;
+        transition: all 0.2s;
+      }
+      .res-item:hover {
+        border-color: rgba(212, 169, 106, 0.3);
+      }
+      .res-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+      .res-ref {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1rem;
+        color: var(--gold);
+        letter-spacing: 0.06em;
+        font-weight: 600;
+      }
+      .res-time {
+        font-size: 0.7rem;
+        color: var(--muted);
+      }
+      .res-client {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--earth);
+        margin-bottom: 0.3rem;
+      }
+      .res-details {
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-bottom: 0.8rem;
+        line-height: 1.5;
+      }
+      .res-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .res-total {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.1rem;
+        color: var(--gold);
+        font-weight: 600;
+      }
+      .res-actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .btn-confirm {
+        background: var(--green);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 0.4rem 0.9rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-family: "Nunito Sans", sans-serif;
+      }
+      .btn-confirm:hover {
+        background: #1e7a35;
+      }
+      .btn-cancel {
+        background: var(--red);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 0.4rem 0.9rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-family: "Nunito Sans", sans-serif;
+      }
+      .btn-cancel:hover {
+        background: var(--red2);
+      }
+      .statut-badge {
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.25rem 0.8rem;
+        border-radius: 20px;
+      }
+      .s-nouvelle {
+        background: rgba(200, 146, 42, 0.12);
+        color: var(--gold);
+      }
+      .s-confirmee {
+        background: rgba(37, 211, 102, 0.12);
+        color: var(--green2);
+      }
+      .s-annulee {
+        background: rgba(192, 57, 43, 0.12);
+        color: #f87171;
+      }
+
+      /* Chambre badges */
+      .chambre-badge {
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.7rem;
+        border-radius: 20px;
+      }
+      .c-confort {
+        background: rgba(26, 58, 42, 0.1);
+        color: var(--forest2);
+      }
+      .c-superieure {
+        background: rgba(200, 146, 42, 0.1);
+        color: var(--gold);
+      }
+      .c-suite {
+        background: rgba(44, 26, 14, 0.1);
+        color: var(--earth2);
+      }
+
+      /* Stats chambres */
+      .chambre-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid rgba(212, 169, 106, 0.08);
+      }
+      .chambre-item:last-child {
+        border-bottom: none;
+      }
+      .ch-icon {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+      .ch-info {
+        flex: 1;
+      }
+      .ch-nom {
+        font-weight: 700;
+        color: var(--earth);
+        font-size: 0.88rem;
+      }
+      .ch-count {
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+      .ch-bar-wrap {
+        flex: 1;
+        background: rgba(212, 169, 106, 0.1);
+        border-radius: 20px;
+        height: 6px;
+        overflow: hidden;
+        max-width: 80px;
+      }
+      .ch-bar {
+        height: 100%;
+        background: linear-gradient(to right, var(--forest2), var(--gold));
+        border-radius: 20px;
+        transition: width 1s ease;
+      }
+
+      /* Chart */
+      .chart-container {
+        position: relative;
+        height: 200px;
+      }
+
+      /* Empty */
+      .empty-state {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--muted);
+      }
+      .empty-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .dash-grid {
+          grid-template-columns: 1fr;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .dash-main {
+          padding: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- LOGIN -->
+    <div id="login-screen">
+      <div class="login-box">
+        <div class="login-logo">Ten<span>ko</span> Lodge</div>
+        <div class="login-sub">Espace Gérant</div>
+        <div class="lfield">
+          <label>Email</label>
+          <input
+            type="email"
+            id="login-email"
+            placeholder="gerant@tenkolodge.bf"
+          />
+        </div>
+        <div class="lfield">
+          <label>Mot de passe</label>
+          <input
+            type="password"
+            id="login-password"
+            placeholder="••••••••"
+            onkeypress="if (event.key === 'Enter') login();"
+          />
+        </div>
+        <button class="login-btn" onclick="login()">Se connecter →</button>
+        <div class="login-error" id="login-error">
+          Email ou mot de passe incorrect
+        </div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard">
+      <div class="dash-header">
+        <div class="dash-logo">Ten<span>ko</span> Lodge</div>
+        <div class="dash-right">
+          <div class="live-badge">
+            <div class="live-dot"></div>
+            Live
+          </div>
+          <span class="last-update" id="last-update"></span>
+          <button class="logout-btn" onclick="logout()">Déconnexion</button>
+        </div>
+      </div>
+
+      <div class="dash-main">
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Réservations aujourd'hui</div>
+            <div class="stat-value sv-gold" id="stat-res-jour">—</div>
+            <div class="stat-sub">nouvelles réservations</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Revenus aujourd'hui</div>
+            <div class="stat-value sv-green" id="stat-rev-jour">—</div>
+            <div class="stat-sub">FCFA encaissés</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Réservations ce mois</div>
+            <div class="stat-value sv-blue" id="stat-res-mois">—</div>
+            <div class="stat-sub">réservations totales</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Revenus ce mois</div>
+            <div class="stat-value sv-gold" id="stat-rev-mois">—</div>
+            <div class="stat-sub">FCFA ce mois</div>
+          </div>
+        </div>
+
+        <!-- Grid -->
+        <div class="dash-grid">
+          <!-- Réservations -->
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">🏨 Réservations en temps réel</span>
+              <button class="refresh-btn" onclick="loadDashboard()">
+                🔄 Actualiser
+              </button>
+            </div>
+            <div
+              class="panel-body"
+              id="reservations-list"
+              style="max-height: 500px; overflow-y: auto"
+            >
+              <div class="empty-state">
+                <span class="empty-icon">🏨</span>
+                <div>Chargement des réservations...</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Colonne droite -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem">
+            <!-- Par chambre -->
+            <div class="panel">
+              <div class="panel-header">
+                <span class="panel-title">🛏️ Par type de chambre</span>
+              </div>
+              <div class="panel-body" id="stats-chambres">
+                <div class="empty-state">
+                  <span class="empty-icon">📊</span>
+                  <div>Pas encore de données</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chart -->
+            <div class="panel">
+              <div class="panel-header">
+                <span class="panel-title">📊 Répartition chambres</span>
+              </div>
+              <div class="panel-body">
+                <div class="chart-container">
+                  <canvas id="chambreChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const API =
+        (window.location.hostname === "localhost"
+          ? "http://localhost:3001"
+          : "http://" + window.location.hostname + ":3001") + "/api";
+      let chambreChart = null;
+
+      // LOGIN
+      async function login() {
+        const email    = document.getElementById("login-email").value.trim();
+        const password = document.getElementById("login-password").value;
+        const errEl    = document.getElementById("login-error");
+        const btn      = document.querySelector(".login-btn");
+        errEl.style.display = "none";
+        btn.textContent = "Connexion...";
+        btn.disabled = true;
+        try {
+          const res = await fetch(`${API}/auth`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+          });
+          if (res.ok) {
+            document.getElementById("login-screen").style.display = "none";
+            document.getElementById("dashboard").style.display = "block";
+            loadDashboard();
+            setInterval(loadDashboard, 30000);
+          } else {
+            errEl.style.display = "block";
+          }
+        } catch (err) {
+          errEl.textContent = "Impossible de joindre le serveur.";
+          errEl.style.display = "block";
+        } finally {
+          btn.textContent = "Se connecter →";
+          btn.disabled = false;
+        }
+      }
+
+      function logout() {
+        document.getElementById("dashboard").style.display = "none";
+        document.getElementById("login-screen").style.display = "flex";
+        document.getElementById("login-email").value = "";
+        document.getElementById("login-password").value = "";
+      }
+
+      // CHARGER DASHBOARD
+      async function loadDashboard() {
+        try {
+          const [reservations, stats] = await Promise.all([
+            fetch(`${API}/reservations`).then((r) => r.json()),
+            fetch(`${API}/stats`).then((r) => r.json()),
+          ]);
+          updateStats(stats);
+          renderReservations(reservations);
+          renderStatsChambres(stats.par_chambre || []);
+          renderChart(stats.par_chambre || []);
+          const now = new Date();
+          document.getElementById("last-update").textContent =
+            `Mis à jour à ${now.getHours()}:${String(now.getMinutes()).padStart(2, "0")}`;
+        } catch (err) {
+          console.error("Erreur:", err);
+        }
+      }
+
+      // STATS
+      function updateStats(stats) {
+        const j = stats.aujourd_hui || {};
+        const m = stats.ce_mois || {};
+        const safeSet = (id, val) => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = val;
+        };
+        safeSet("stat-res-jour", j.total || 0);
+        safeSet(
+          "stat-rev-jour",
+          j.revenus ? Number(j.revenus).toLocaleString("fr-FR") : "0",
+        );
+        safeSet("stat-res-mois", m.total || 0);
+        safeSet(
+          "stat-rev-mois",
+          m.revenus ? Number(m.revenus).toLocaleString("fr-FR") : "0",
+        );
+      }
+
+      // RÉSERVATIONS
+      function renderReservations(reservations) {
+        const list = document.getElementById("reservations-list");
+        if (!reservations || reservations.length === 0) {
+          list.innerHTML = `<div class="empty-state"><span class="empty-icon">🏨</span><div>Aucune réservation pour le moment</div></div>`;
+          return;
+        }
+
+        const chambreLabels = {
+          confort: "Chambre Confort",
+          superieure: "Chambre Supérieure",
+          suite: "Suite Présidentielle",
+        };
+        const chambreClass = {
+          confort: "c-confort",
+          superieure: "c-superieure",
+          suite: "c-suite",
+        };
+
+        list.innerHTML = reservations
+          .slice(0, 20)
+          .map((res) => {
+            const date = new Date(res.created_at);
+            const heure = `${date.getHours()}:${String(date.getMinutes()).padStart(2, "0")}`;
+            const statutClass =
+              {
+                nouvelle: "s-nouvelle",
+                confirmee: "s-confirmee",
+                annulee: "s-annulee",
+              }[res.statut] || "s-nouvelle";
+            const actions =
+              res.statut === "nouvelle"
+                ? `
+      <div class="res-actions">
+        <button class="btn-confirm" onclick="updateStatut(${res.id},'confirmee')">✅ Confirmer</button>
+        <button class="btn-cancel" onclick="updateStatut(${res.id},'annulee')">❌ Annuler</button>
+      </div>`
+                : `<span class="statut-badge ${statutClass}">${res.statut}</span>`;
+
+            return `
+      <div class="res-item">
+        <div class="res-top">
+          <span class="res-ref">#${res.reference}</span>
+          <span class="res-time">${heure}</span>
+        </div>
+        <div class="res-client">👤 ${res.client_nom} · 📞 ${res.client_telephone}</div>
+        <div class="res-details">
+          📅 Arrivée : <strong>${res.date_arrivee || "—"}</strong> · Départ : <strong>${res.date_depart || "—"}</strong><br>
+          <span class="chambre-badge ${chambreClass[res.type_chambre]}">${chambreLabels[res.type_chambre] || res.type_chambre}</span>
+          · 👥 ${res.nb_personnes} personne(s)
+          ${res.notes ? "<br>📝 " + res.notes : ""}
+        </div>
+        <div class="res-footer">
+          <span class="res-total">${Number(res.montant_total).toLocaleString("fr-FR")} FCFA</span>
+          ${actions}
+        </div>
+      </div>`;
+          })
+          .join("");
+      }
+
+      // CHANGER STATUT
+      async function updateStatut(id, statut) {
+        try {
+          await fetch(`${API}/reservations/${id}/statut`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ statut }),
+          });
+          loadDashboard();
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+      // STATS CHAMBRES
+      function renderStatsChambres(data) {
+        const container = document.getElementById("stats-chambres");
+        if (!data || data.length === 0) {
+          container.innerHTML = `<div class="empty-state"><span class="empty-icon">🛏️</span><div>Pas encore de réservations</div></div>`;
+          return;
+        }
+        const max = Math.max(...data.map((d) => d.total)) || 1;
+        const icons = { confort: "🛏️", superieure: "🏡", suite: "👑" };
+        const labels = {
+          confort: "Chambre Confort",
+          superieure: "Chambre Supérieure",
+          suite: "Suite Présidentielle",
+        };
+        container.innerHTML = data
+          .map(
+            (d) => `
+    <div class="chambre-item">
+      <div class="ch-icon">${icons[d.type_chambre] || "🏨"}</div>
+      <div class="ch-info">
+        <div class="ch-nom">${labels[d.type_chambre] || d.type_chambre}</div>
+        <div class="ch-count">${d.total} réservation(s)</div>
+      </div>
+      <div class="ch-bar-wrap">
+        <div class="ch-bar" style="width:${(d.total / max) * 100}%"></div>
+      </div>
+    </div>`,
+          )
+          .join("");
+      }
+
+      // CHART
+      function renderChart(data) {
+        const ctx = document.getElementById("chambreChart").getContext("2d");
+        const labels = {
+          confort: "Confort",
+          superieure: "Supérieure",
+          suite: "Suite",
+        };
+        const colors = {
+          confort: "#2A5A40",
+          superieure: "#C8922A",
+          suite: "#2C1A0E",
+        };
+        const d =
+          data.length > 0 ? data : [{ type_chambre: "confort", total: 0 }];
+        if (chambreChart) chambreChart.destroy();
+        chambreChart = new Chart(ctx, {
+          type: "doughnut",
+          data: {
+            labels: d.map((x) => labels[x.type_chambre] || x.type_chambre),
+            datasets: [
+              {
+                data: d.map((x) => x.total),
+                backgroundColor: d.map((x) => colors[x.type_chambre] || "#888"),
+                borderWidth: 0,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: "bottom",
+                labels: { color: "#8A7060", font: { size: 11 }, padding: 12 },
+              },
+            },
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

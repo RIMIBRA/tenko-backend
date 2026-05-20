@@ -1,0 +1,2618 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tenko Lodge — Zone du Bois, Ouagadougou</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Nunito+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --forest: #1a3a2a;
+        --forest2: #2a5a40;
+        --forest3: #3d7a58;
+        --sand: #d4a96a;
+        --sand2: #e8c88a;
+        --cream: #f7f0e3;
+        --earth: #2c1a0e;
+        --earth2: #4a3020;
+        --gold: #c8922a;
+        --gold2: #e0a830;
+        --white: #fdfaf5;
+        --text: #2c1a0e;
+        --muted: #8a7060;
+        --light: #ede5d5;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Nunito Sans", sans-serif;
+        background: var(--cream);
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      /* ── NAVIGATION ── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 6%;
+        height: 72px;
+        background: rgba(26, 58, 42, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(212, 169, 106, 0.2);
+        transition: all 0.3s;
+      }
+
+      .nav-logo {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--white);
+        letter-spacing: 0.06em;
+        text-decoration: none;
+      }
+
+      .nav-logo span {
+        color: var(--sand);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(253, 250, 245, 0.75);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--sand);
+      }
+
+      .nav-cta {
+        background: var(--gold);
+        color: var(--earth) !important;
+        padding: 0.55rem 1.4rem;
+        border-radius: 2px;
+        font-weight: 700 !important;
+        transition: background 0.2s !important;
+      }
+
+      .nav-cta:hover {
+        background: var(--gold2) !important;
+        color: var(--earth) !important;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            160deg,
+            rgba(26, 58, 42, 0.85) 0%,
+            rgba(44, 26, 14, 0.7) 60%,
+            rgba(26, 58, 42, 0.5) 100%
+          ),
+          repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 40px,
+            rgba(212, 169, 106, 0.03) 40px,
+            rgba(212, 169, 106, 0.03) 80px
+          );
+        background-color: var(--forest);
+      }
+
+      /* Décoration géométrique africaine */
+      .hero-pattern {
+        position: absolute;
+        inset: 0;
+        background-image:
+          radial-gradient(
+            circle at 20% 50%,
+            rgba(212, 169, 106, 0.12) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(61, 122, 88, 0.2) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 60% 80%,
+            rgba(200, 146, 42, 0.08) 0%,
+            transparent 35%
+          );
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 0 5%;
+        max-width: 900px;
+      }
+
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--sand);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-eyebrow::before,
+      .hero-eyebrow::after {
+        content: "";
+        width: 40px;
+        height: 1px;
+        background: var(--sand);
+        opacity: 0.5;
+      }
+
+      .hero-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(3.5rem, 8vw, 6.5rem);
+        font-weight: 300;
+        color: var(--white);
+        line-height: 1;
+        letter-spacing: -0.01em;
+        margin-bottom: 0.3rem;
+      }
+
+      .hero-title em {
+        font-style: italic;
+        color: var(--sand);
+      }
+
+      .hero-sub {
+        font-size: 0.82rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(253, 250, 245, 0.5);
+        font-weight: 300;
+        margin-bottom: 2.5rem;
+      }
+
+      .hero-desc {
+        font-size: 1rem;
+        color: rgba(253, 250, 245, 0.75);
+        font-weight: 300;
+        line-height: 1.8;
+        max-width: 520px;
+        margin: 0 auto 3rem;
+      }
+
+      .hero-btns {
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        background: var(--gold);
+        color: var(--earth);
+        padding: 1rem 2.5rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 2px;
+        transition: all 0.25s;
+        box-shadow: 0 4px 24px rgba(200, 146, 42, 0.3);
+      }
+
+      .btn-primary:hover {
+        background: var(--gold2);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(200, 146, 42, 0.4);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--white);
+        padding: 1rem 2.5rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: 1px solid rgba(253, 250, 245, 0.35);
+        border-radius: 2px;
+        transition: all 0.25s;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .btn-outline:hover {
+        border-color: var(--sand);
+        color: var(--sand);
+      }
+
+      /* Stats hero */
+      .hero-stats {
+        position: absolute;
+        bottom: 3rem;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        z-index: 2;
+      }
+
+      .hero-stat {
+        text-align: center;
+      }
+
+      .hero-stat-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--sand);
+        line-height: 1;
+        display: block;
+      }
+
+      .hero-stat-label {
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(253, 250, 245, 0.45);
+        font-weight: 600;
+        margin-top: 0.3rem;
+        display: block;
+      }
+
+      /* Scroll indicator */
+      .scroll-indicator {
+        position: absolute;
+        bottom: 3rem;
+        right: 6%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        z-index: 2;
+      }
+
+      .scroll-indicator span {
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(253, 250, 245, 0.35);
+        writing-mode: vertical-rl;
+      }
+
+      .scroll-line {
+        width: 1px;
+        height: 50px;
+        background: linear-gradient(
+          to bottom,
+          rgba(212, 169, 106, 0.6),
+          transparent
+        );
+        animation: scrollDown 2s infinite;
+      }
+
+      @keyframes scrollDown {
+        0% {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+      }
+
+      /* ── SECTION STYLES ── */
+      section {
+        padding: 100px 6%;
+      }
+
+      .sec-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 0.65rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+      }
+
+      .sec-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2.2rem, 5vw, 3.8rem);
+        font-weight: 400;
+        line-height: 1.05;
+        color: var(--earth);
+        margin-bottom: 1.5rem;
+      }
+
+      .sec-title em {
+        font-style: italic;
+        color: var(--forest2);
+      }
+
+      .sec-sub {
+        font-size: 0.9rem;
+        color: var(--muted);
+        font-weight: 300;
+        line-height: 1.9;
+        max-width: 580px;
+      }
+
+      /* ── À PROPOS ── */
+      .about {
+        background: var(--white);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8rem;
+        align-items: center;
+      }
+
+      .about-visual {
+        position: relative;
+      }
+
+      .about-img-main {
+        width: 100%;
+        aspect-ratio: 4/5;
+        background: linear-gradient(
+          135deg,
+          var(--forest) 0%,
+          var(--forest2) 50%,
+          var(--earth) 100%
+        );
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .about-img-main::before {
+        content: "🌿";
+        font-size: 6rem;
+        opacity: 0.15;
+      }
+
+      .about-img-overlay {
+        position: absolute;
+        bottom: -2rem;
+        right: -2rem;
+        width: 55%;
+        aspect-ratio: 1;
+        background: linear-gradient(135deg, var(--sand) 0%, var(--gold) 100%);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--earth);
+        text-align: center;
+        padding: 1.5rem;
+        line-height: 1.4;
+        box-shadow: 0 20px 60px rgba(200, 146, 42, 0.25);
+      }
+
+      .about-badge {
+        position: absolute;
+        top: 2rem;
+        left: -2rem;
+        background: var(--forest);
+        color: var(--white);
+        padding: 1.2rem 1.8rem;
+        border-left: 3px solid var(--gold);
+      }
+
+      .about-badge-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--sand);
+        display: block;
+        line-height: 1;
+      }
+
+      .about-badge-label {
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(253, 250, 245, 0.6);
+        font-weight: 600;
+      }
+
+      .about-features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+        margin-top: 2.5rem;
+      }
+
+      .about-feat {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+        padding: 1rem;
+        background: var(--cream);
+        border-radius: 4px;
+        border-left: 2px solid var(--sand);
+      }
+
+      .about-feat-icon {
+        font-size: 1.2rem;
+        flex-shrink: 0;
+        margin-top: 0.1rem;
+      }
+
+      .about-feat-title {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--earth);
+        margin-bottom: 0.2rem;
+        letter-spacing: 0.04em;
+      }
+
+      .about-feat-desc {
+        font-size: 0.72rem;
+        color: var(--muted);
+        font-weight: 300;
+        line-height: 1.5;
+      }
+
+      /* ── CHAMBRES ── */
+      .rooms {
+        background: var(--forest);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .rooms::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 60px,
+          rgba(212, 169, 106, 0.025) 60px,
+          rgba(212, 169, 106, 0.025) 120px
+        );
+      }
+
+      .rooms-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 4rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .rooms .sec-title {
+        color: var(--white);
+      }
+      .rooms .sec-eyebrow {
+        color: var(--sand);
+      }
+
+      .rooms-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .room-card {
+        background: rgba(253, 250, 245, 0.04);
+        border: 1px solid rgba(212, 169, 106, 0.12);
+        border-radius: 6px;
+        overflow: hidden;
+        transition: all 0.3s;
+      }
+
+      .room-card:hover {
+        border-color: rgba(212, 169, 106, 0.35);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .room-img {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .room-img-1 {
+        background: linear-gradient(135deg, #2a4a35 0%, #1a3228 100%);
+      }
+      .room-img-2 {
+        background: linear-gradient(135deg, #3a4a20 0%, #2a3a15 100%);
+      }
+      .room-img-3 {
+        background: linear-gradient(135deg, #4a3020 0%, #3a2010 100%);
+      }
+
+      .room-emoji {
+        font-size: 4rem;
+        opacity: 0.3;
+      }
+
+      .room-tag {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: var(--gold);
+        color: var(--earth);
+        font-size: 0.58rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 0.3rem 0.8rem;
+        border-radius: 2px;
+      }
+
+      .room-body {
+        padding: 1.5rem;
+      }
+
+      .room-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: 0.5rem;
+        font-style: italic;
+      }
+
+      .room-desc {
+        font-size: 0.78rem;
+        color: rgba(253, 250, 245, 0.5);
+        font-weight: 300;
+        line-height: 1.7;
+        margin-bottom: 1.2rem;
+      }
+
+      .room-amenities {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+
+      .room-am {
+        font-size: 0.65rem;
+        color: rgba(253, 250, 245, 0.55);
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .room-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1.2rem;
+        border-top: 1px solid rgba(212, 169, 106, 0.12);
+      }
+
+      .room-price {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--sand);
+      }
+
+      .room-price span {
+        font-size: 0.65rem;
+        color: rgba(253, 250, 245, 0.4);
+        font-family: "Nunito Sans", sans-serif;
+        font-weight: 300;
+      }
+
+      .room-btn {
+        background: transparent;
+        border: 1px solid rgba(212, 169, 106, 0.3);
+        color: var(--sand);
+        padding: 0.5rem 1.2rem;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: all 0.2s;
+        font-family: "Nunito Sans", sans-serif;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .room-btn:hover {
+        background: var(--gold);
+        color: var(--earth);
+        border-color: var(--gold);
+      }
+
+      /* ── ÉQUIPEMENTS ── */
+      .amenities {
+        background: var(--cream);
+      }
+
+      .amenities-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-top: 4rem;
+      }
+
+      .amenity-card {
+        padding: 2rem 1.5rem;
+        background: var(--white);
+        border-radius: 6px;
+        text-align: center;
+        transition: all 0.3s;
+        border: 1px solid rgba(212, 169, 106, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .amenity-card::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(to right, var(--forest), var(--gold));
+        transform: scaleX(0);
+        transition: transform 0.3s;
+      }
+
+      .amenity-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(44, 26, 14, 0.1);
+      }
+      .amenity-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .amenity-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+      .amenity-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--earth);
+        margin-bottom: 0.6rem;
+      }
+
+      .amenity-desc {
+        font-size: 0.78rem;
+        color: var(--muted);
+        font-weight: 300;
+        line-height: 1.7;
+      }
+
+      /* ── RESERVATION ── */
+      .reservation {
+        background: var(--earth);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .reservation::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse at 30% 50%,
+            rgba(61, 122, 88, 0.2) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse at 70% 50%,
+            rgba(200, 146, 42, 0.1) 0%,
+            transparent 50%
+          );
+      }
+
+      .reservation-inner {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .reservation .sec-title {
+        color: var(--white);
+        margin-bottom: 0.8rem;
+      }
+      .reservation .sec-eyebrow {
+        color: var(--sand);
+      }
+
+      .res-sub {
+        font-size: 0.9rem;
+        color: rgba(253, 250, 245, 0.55);
+        font-weight: 300;
+        line-height: 1.9;
+        margin-bottom: 3rem;
+      }
+
+      .res-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr auto;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .res-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        text-align: left;
+      }
+
+      .res-field label {
+        font-size: 0.6rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(253, 250, 245, 0.45);
+        font-weight: 600;
+      }
+
+      .res-field input,
+      .res-field select {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(212, 169, 106, 0.2);
+        color: var(--white);
+        padding: 0.85rem 1rem;
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 0.85rem;
+        border-radius: 2px;
+        outline: none;
+        transition: border-color 0.2s;
+        width: 100%;
+      }
+
+      .res-field input:focus,
+      .res-field select:focus {
+        border-color: var(--gold);
+      }
+      .res-field input::placeholder {
+        color: rgba(253, 250, 245, 0.3);
+      }
+      .res-field select option {
+        background: var(--earth2);
+      }
+
+      .res-btn {
+        background: var(--gold);
+        color: var(--earth);
+        border: none;
+        padding: 0 2rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        border-radius: 2px;
+        cursor: pointer;
+        transition: all 0.25s;
+        font-family: "Nunito Sans", sans-serif;
+        align-self: flex-end;
+        height: 48px;
+        white-space: nowrap;
+        box-shadow: 0 4px 20px rgba(200, 146, 42, 0.3);
+      }
+
+      .res-btn:hover {
+        background: var(--gold2);
+        transform: translateY(-1px);
+      }
+
+      .res-or {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+        color: rgba(253, 250, 245, 0.2);
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .res-or::before,
+      .res-or::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: rgba(212, 169, 106, 0.15);
+      }
+
+      .res-wa {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        background: #25d366;
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: 2px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.25s;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+      }
+
+      .res-wa:hover {
+        background: #20c05e;
+        transform: translateY(-1px);
+      }
+
+      /* ── CONTACT / FOOTER ── */
+      .contact {
+        background: var(--forest);
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 6rem;
+        align-items: start;
+      }
+
+      .contact .sec-title {
+        color: var(--white);
+        margin-bottom: 2rem;
+      }
+      .contact .sec-eyebrow {
+        color: var(--sand);
+      }
+
+      .contact-infos {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .contact-info {
+        display: flex;
+        gap: 1.2rem;
+        align-items: flex-start;
+      }
+
+      .ci-icon {
+        width: 42px;
+        height: 42px;
+        background: rgba(212, 169, 106, 0.12);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+        border: 1px solid rgba(212, 169, 106, 0.15);
+      }
+
+      .ci-label {
+        font-size: 0.62rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(253, 250, 245, 0.35);
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+
+      .ci-value {
+        font-size: 0.9rem;
+        color: var(--white);
+        font-weight: 400;
+        line-height: 1.5;
+      }
+
+      .contact-map {
+        background: rgba(253, 250, 245, 0.04);
+        border: 1px solid rgba(212, 169, 106, 0.12);
+        border-radius: 6px;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .map-placeholder {
+        height: 200px;
+        background: linear-gradient(
+          135deg,
+          rgba(42, 90, 64, 0.3) 0%,
+          rgba(26, 58, 42, 0.5) 100%
+        );
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(212, 169, 106, 0.1);
+      }
+
+      .map-info {
+        font-size: 0.8rem;
+        color: rgba(253, 250, 245, 0.5);
+        line-height: 1.7;
+        margin-bottom: 1.2rem;
+      }
+
+      .map-btn {
+        display: inline-block;
+        background: var(--gold);
+        color: var(--earth);
+        padding: 0.7rem 1.8rem;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        border-radius: 2px;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+
+      .map-btn:hover {
+        background: var(--gold2);
+      }
+
+      /* Footer */
+      footer {
+        background: var(--earth);
+        padding: 2rem 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(212, 169, 106, 0.1);
+      }
+
+      .footer-logo {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--white);
+        letter-spacing: 0.06em;
+      }
+
+      .footer-logo span {
+        color: var(--sand);
+      }
+
+      .footer-copy {
+        font-size: 0.72rem;
+        color: rgba(253, 250, 245, 0.3);
+        font-weight: 300;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .footer-links a {
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(253, 250, 245, 0.4);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .footer-links a:hover {
+        color: var(--sand);
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 900px) {
+        .about {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .about-visual {
+          display: none;
+        }
+        .rooms-grid {
+          grid-template-columns: 1fr;
+        }
+        .amenities-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .res-form {
+          grid-template-columns: 1fr 1fr;
+        }
+        .contact {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 72px;
+          left: 0;
+          right: 0;
+          background: var(--forest);
+          flex-direction: column;
+          padding: 0.5rem 6% 1rem;
+          gap: 0;
+          border-bottom: 1px solid rgba(212, 169, 106, 0.2);
+          box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .nav-links.mobile-open {
+          display: flex;
+        }
+        .nav-links li {
+          border-bottom: 1px solid rgba(212, 169, 106, 0.08);
+        }
+        .nav-links li:last-child {
+          border-bottom: none;
+          padding-top: 0.5rem;
+        }
+        .nav-links a {
+          padding: 0.85rem 0;
+          display: block;
+        }
+        .nav-hamburger {
+          display: flex;
+        }
+        .hero-stats {
+          gap: 2rem;
+        }
+        footer {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+        .rooms-header {
+          flex-direction: column;
+          gap: 1rem;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 600px) {
+        section {
+          padding: 70px 5%;
+        }
+        .amenities-grid {
+          grid-template-columns: 1fr;
+        }
+        .res-form {
+          grid-template-columns: 1fr;
+        }
+        .hero-stats {
+          display: none;
+        }
+      }
+
+      /* ── ANIMATIONS ── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-eyebrow {
+        animation: fadeUp 0.8s ease 0.2s both;
+      }
+      .hero-title {
+        animation: fadeUp 0.8s ease 0.4s both;
+      }
+      .hero-sub {
+        animation: fadeUp 0.8s ease 0.5s both;
+      }
+      .hero-desc {
+        animation: fadeUp 0.8s ease 0.6s both;
+      }
+      .hero-btns {
+        animation: fadeUp 0.8s ease 0.7s both;
+      }
+      .hero-stats {
+        animation: fadeUp 0.8s ease 0.9s both;
+      }
+
+      /* Total box caché par défaut */
+      #r-total-box { display: none; }
+
+      /* ── HAMBURGER MOBILE ── */
+      .nav-hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 101;
+      }
+      .nav-hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--white);
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+
+      /* WhatsApp flottant */
+      .wa-float {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 999;
+        background: #25d366;
+        color: white;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        transition: all 0.25s;
+        animation: fadeUp 1s ease 1s both;
+      }
+
+      .wa-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVIGATION -->
+    <nav>
+      <a href="#" class="nav-logo">Ten<span>ko</span> Lodge</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">À Propos</a></li>
+        <li><a href="#rooms">Chambres</a></li>
+        <li><a href="#amenities">Équipements</a></li>
+        <li><a href="#reservation">Réservation</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#reservation" class="nav-cta">Réserver</a></li>
+      </ul>
+      <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-pattern"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          Zone du Bois · Ouagadougou · Burkina Faso
+        </div>
+        <h1 class="hero-title">Votre havre<br />de <em>sérénité</em></h1>
+        <div class="hero-sub">Bar · Restaurant · Piscine · Événements</div>
+        <p class="hero-desc">
+          Niché au cœur de la Zone du Bois, Tenko Lodge vous offre un cadre
+          verdoyant et apaisé pour des séjours d'exception à Ouagadougou.
+          Détente, gastronomie et hospitalité burkinabè.
+        </p>
+        <div class="hero-btns">
+          <a href="#reservation" class="btn-primary">Réserver une chambre</a>
+          <a href="#rooms" class="btn-outline">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            Voir les chambres
+          </a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">4 km</span>
+          <span class="hero-stat-label">De l'aéroport</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">1 521</span>
+          <span class="hero-stat-label">Fans Facebook</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">24h</span>
+          <span class="hero-stat-label">Réception ouverte</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">WiFi</span>
+          <span class="hero-stat-label">Gratuit partout</span>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <div class="scroll-line"></div>
+        <span>Défiler</span>
+      </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section class="about" id="about">
+      <div class="about-visual">
+        <div class="about-img-main"></div>
+        <div class="about-badge">
+          <span class="about-badge-num">658</span>
+          <span class="about-badge-label">Visiteurs satisfaits</span>
+        </div>
+        <div class="about-img-overlay">
+          🌿 Un cadre<br />verdoyant<br />& sécurisé
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="sec-eyebrow">Notre histoire</div>
+        <h2 class="sec-title">Un lodge unique<br />au cœur d'<em>Ouaga</em></h2>
+        <p class="sec-sub">
+          Tenko Lodge est bien plus qu'un hôtel — c'est une invitation à vivre
+          l'hospitalité burkinabè dans un cadre unique. Piscine, bar, restaurant
+          gastronomique, et espaces événementiels pour tous vos moments
+          importants.
+        </p>
+        <div class="about-features">
+          <div class="about-feat">
+            <span class="about-feat-icon">🏊</span>
+            <div>
+              <div class="about-feat-title">Piscine</div>
+              <div class="about-feat-desc">
+                Détente assurée dans notre piscine
+              </div>
+            </div>
+          </div>
+          <div class="about-feat">
+            <span class="about-feat-icon">🍽️</span>
+            <div>
+              <div class="about-feat-title">Restaurant</div>
+              <div class="about-feat-desc">
+                Cuisine locale et internationale
+              </div>
+            </div>
+          </div>
+          <div class="about-feat">
+            <span class="about-feat-icon">🎉</span>
+            <div>
+              <div class="about-feat-title">Événements</div>
+              <div class="about-feat-desc">Cérémonies, séminaires, soirées</div>
+            </div>
+          </div>
+          <div class="about-feat">
+            <span class="about-feat-icon">🚗</span>
+            <div>
+              <div class="about-feat-title">Parking</div>
+              <div class="about-feat-desc">
+                Parking privé et sécurisé gratuit
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAMBRES -->
+    <section class="rooms" id="rooms">
+      <div class="rooms-header">
+        <div>
+          <div class="sec-eyebrow">Nos hébergements</div>
+          <h2 class="sec-title">Chambres &<br /><em>Suites</em></h2>
+        </div>
+        <p
+          style="
+            color: rgba(253, 250, 245, 0.45);
+            font-size: 0.82rem;
+            font-weight: 300;
+            max-width: 280px;
+            line-height: 1.7;
+          "
+        >
+          Chaque chambre est conçue pour votre confort avec climatisation, WiFi,
+          et salle de bain privée.
+        </p>
+      </div>
+      <div class="rooms-grid">
+        <div class="room-card">
+          <div class="room-img room-img-1">
+            <span class="room-emoji">🛏️</span>
+            <span class="room-tag">Standard</span>
+          </div>
+          <div class="room-body">
+            <div class="room-name">Chambre Confort</div>
+            <div class="room-desc">
+              Chambre climatisée avec vue sur jardin, télévision satellite,
+              salle de bain privée et WiFi haut débit.
+            </div>
+            <div class="room-amenities">
+              <span class="room-am">❄️ Climatisation</span>
+              <span class="room-am">📺 TV Sat</span>
+              <span class="room-am">📶 WiFi</span>
+              <span class="room-am">🛁 Salle de bain</span>
+            </div>
+            <div class="room-footer">
+              <div class="room-price">35 000 FCFA <span>/ nuit</span></div>
+              <a href="#reservation" class="room-btn">Réserver</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="room-card">
+          <div class="room-img room-img-2">
+            <span class="room-emoji">🏡</span>
+            <span
+              class="room-tag"
+              style="background: var(--forest2); color: white"
+              >Supérieure</span
+            >
+          </div>
+          <div class="room-body">
+            <div class="room-name">Chambre Supérieure</div>
+            <div class="room-desc">
+              Spacieuse et lumineuse avec terrasse privée, mobilier de qualité
+              et vue sur la piscine.
+            </div>
+            <div class="room-amenities">
+              <span class="room-am">❄️ Climatisation</span>
+              <span class="room-am">🌿 Terrasse</span>
+              <span class="room-am">📶 WiFi</span>
+              <span class="room-am">🏊 Vue piscine</span>
+            </div>
+            <div class="room-footer">
+              <div class="room-price">55 000 FCFA <span>/ nuit</span></div>
+              <a href="#reservation" class="room-btn">Réserver</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="room-card">
+          <div class="room-img room-img-3">
+            <span class="room-emoji">👑</span>
+            <span
+              class="room-tag"
+              style="background: var(--earth2); color: var(--sand)"
+              >Suite VIP</span
+            >
+          </div>
+          <div class="room-body">
+            <div class="room-name">Suite Présidentielle</div>
+            <div class="room-desc">
+              Notre suite la plus luxueuse avec salon séparé, bain à remous, et
+              service personnalisé 24h/24.
+            </div>
+            <div class="room-amenities">
+              <span class="room-am">🛁 Bain à remous</span>
+              <span class="room-am">🛋️ Salon</span>
+              <span class="room-am">📶 WiFi premium</span>
+              <span class="room-am">🍳 Mini-cuisine</span>
+            </div>
+            <div class="room-footer">
+              <div class="room-price">85 000 FCFA <span>/ nuit</span></div>
+              <a href="#reservation" class="room-btn">Réserver</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÉQUIPEMENTS -->
+    <section class="amenities" id="amenities">
+      <div style="text-align: center">
+        <div class="sec-eyebrow" style="justify-content: center">
+          Ce que nous offrons
+        </div>
+        <h2 class="sec-title" style="text-align: center">
+          Tout pour votre<br /><em>bien-être</em>
+        </h2>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-card">
+          <span class="amenity-icon">🏊</span>
+          <div class="amenity-title">Piscine</div>
+          <div class="amenity-desc">
+            Piscine extérieure avec transats et bar à cocktails en bord de
+            piscine.
+          </div>
+        </div>
+        <div class="amenity-card">
+          <span class="amenity-icon">🍽️</span>
+          <div class="amenity-title">Restaurant</div>
+          <div class="amenity-desc">
+            Cuisine locale et internationale. Petit-déjeuner inclus dans tous
+            nos séjours.
+          </div>
+        </div>
+        <div class="amenity-card">
+          <span class="amenity-icon">🍹</span>
+          <div class="amenity-title">Bar & Cocktails</div>
+          <div class="amenity-desc">
+            Sélection de cocktails artisanaux, bières locales et vins
+            internationaux.
+          </div>
+        </div>
+        <div class="amenity-card">
+          <span class="amenity-icon">🎉</span>
+          <div class="amenity-title">Événements</div>
+          <div class="amenity-desc">
+            Espaces privatisables pour mariages, séminaires, anniversaires et
+            conférences.
+          </div>
+        </div>
+        <div class="amenity-card">
+          <span class="amenity-icon">📶</span>
+          <div class="amenity-title">WiFi Gratuit</div>
+          <div class="amenity-desc">
+            Connexion haut débit dans toutes les chambres et espaces communs.
+          </div>
+        </div>
+        <div class="amenity-card">
+          <span class="amenity-icon">🚗</span>
+          <div class="amenity-title">Parking Sécurisé</div>
+          <div class="amenity-desc">
+            Parking privé gratuit et sécurisé pour tous nos clients.
+          </div>
+        </div>
+        <div class="amenity-card">
+          <span class="amenity-icon">✈️</span>
+          <div class="amenity-title">Navette Aéroport</div>
+          <div class="amenity-desc">
+            Service de transfert aéroport disponible sur demande. À seulement 4
+            km.
+          </div>
+        </div>
+        <div class="amenity-card">
+          <span class="amenity-icon">🕐</span>
+          <div class="amenity-title">Réception 24h/24</div>
+          <div class="amenity-desc">
+            Notre équipe est disponible à toute heure pour vous accueillir.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL RÉSERVATION -->
+    <div
+      id="res-overlay"
+      style="
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(26, 58, 42, 0.85);
+        z-index: 9999;
+        backdrop-filter: blur(8px);
+        align-items: flex-end;
+        justify-content: center;
+      "
+    >
+      <div
+        id="res-modal"
+        style="
+          background: #f7f0e3;
+          border-radius: 16px 16px 0 0;
+          width: 100%;
+          max-width: 560px;
+          max-height: 90vh;
+          overflow-y: auto;
+          border-top: 3px solid #c8922a;
+          animation: slideUp 0.3s ease;
+          font-family: &quot;Nunito Sans&quot;, sans-serif;
+        "
+      >
+        <!-- Header -->
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.4rem 1.8rem;
+            border-bottom: 1px solid rgba(200, 146, 42, 0.15);
+            position: sticky;
+            top: 0;
+            background: #f7f0e3;
+            z-index: 1;
+          "
+        >
+          <h3
+            style="
+              font-family: &quot;Cormorant Garamond&quot;, serif;
+              font-size: 1.5rem;
+              color: #2c1a0e;
+              font-style: italic;
+            "
+          >
+            🏨 Votre réservation
+          </h3>
+          <button
+            onclick="closeRes()"
+            style="
+              background: rgba(0, 0, 0, 0.06);
+              border: none;
+              width: 32px;
+              height: 32px;
+              border-radius: 50%;
+              cursor: pointer;
+              font-size: 1rem;
+            "
+          >
+            ✕
+          </button>
+        </div>
+
+        <!-- Étapes -->
+        <div
+          style="
+            display: flex;
+            padding: 1rem 1.8rem;
+            gap: 0;
+            border-bottom: 1px solid rgba(200, 146, 42, 0.1);
+          "
+        >
+          <div
+            class="res-step active"
+            id="rstep1"
+            style="flex: 1; text-align: center"
+          >
+            <div class="rsnum">1</div>
+            <div class="rslbl">Infos</div>
+          </div>
+          <div class="res-step" id="rstep2" style="flex: 1; text-align: center">
+            <div class="rsnum">2</div>
+            <div class="rslbl">Paiement</div>
+          </div>
+          <div class="res-step" id="rstep3" style="flex: 1; text-align: center">
+            <div class="rsnum">3</div>
+            <div class="rslbl">Confirmé</div>
+          </div>
+        </div>
+
+        <!-- Panel 1 : Infos -->
+        <div class="rpanel active" id="rpanel1" style="padding: 1.5rem 1.8rem">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 12px;
+              margin-bottom: 12px;
+            "
+          >
+            <div class="rfield">
+              <label>Prénom & Nom</label
+              ><input type="text" id="r-nom" placeholder="Votre nom" />
+            </div>
+            <div class="rfield">
+              <label>Téléphone</label
+              ><input type="tel" id="r-tel" placeholder="+226 XX XX XX XX" />
+            </div>
+          </div>
+          <div class="rfield" style="margin-bottom: 12px">
+            <label>Email (optionnel)</label
+            ><input type="email" id="r-email" placeholder="votre@email.com" />
+          </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 12px;
+              margin-bottom: 12px;
+            "
+          >
+            <div class="rfield">
+              <label>Date d'arrivée</label><input type="date" id="r-arrivee" />
+            </div>
+            <div class="rfield">
+              <label>Date de départ</label><input type="date" id="r-depart" />
+            </div>
+          </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 12px;
+              margin-bottom: 12px;
+            "
+          >
+            <div class="rfield">
+              <label>Type de chambre</label>
+              <select id="r-chambre" onchange="updateTotal()">
+                <option value="">Choisir...</option>
+                <option value="confort">
+                  Chambre Confort — 35 000 FCFA/nuit
+                </option>
+                <option value="superieure">
+                  Chambre Supérieure — 55 000 FCFA/nuit
+                </option>
+                <option value="suite">
+                  Suite Présidentielle — 85 000 FCFA/nuit
+                </option>
+              </select>
+            </div>
+            <div class="rfield">
+              <label>Nombre de personnes</label>
+              <select id="r-pers">
+                <option value="1">1 personne</option>
+                <option value="2">2 personnes</option>
+                <option value="3">3 personnes</option>
+              </select>
+            </div>
+          </div>
+          <div class="rfield" style="margin-bottom: 16px">
+            <label>Remarques (optionnel)</label
+            ><textarea
+              id="r-notes"
+              rows="2"
+              placeholder="Demandes spéciales..."
+              style="
+                resize: none;
+                width: 100%;
+                background: white;
+                border: 1px solid rgba(200, 146, 42, 0.2);
+                border-radius: 4px;
+                padding: 0.75rem;
+                font-family: &quot;Nunito Sans&quot;, sans-serif;
+                font-size: 0.88rem;
+                outline: none;
+              "
+            ></textarea>
+          </div>
+
+          <!-- Total estimé -->
+          <div
+            id="r-total-box"
+            style="
+              background: rgba(200, 146, 42, 0.08);
+              border: 1px solid rgba(200, 146, 42, 0.2);
+              border-radius: 6px;
+              padding: 1rem 1.2rem;
+              margin-bottom: 1rem;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <span
+              style="
+                font-size: 0.78rem;
+                color: #8a7060;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+              "
+              >Total estimé</span
+            >
+            <span
+              id="r-total-val"
+              style="
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+                font-size: 1.5rem;
+                color: #c8922a;
+                font-weight: 600;
+              "
+              >—</span
+            >
+          </div>
+
+          <button
+            onclick="goResStep(2)"
+            style="
+              width: 100%;
+              background: #c8922a;
+              color: #2c1a0e;
+              border: none;
+              border-radius: 4px;
+              padding: 14px;
+              font-size: 0.82rem;
+              font-weight: 700;
+              cursor: pointer;
+              letter-spacing: 0.12em;
+              text-transform: uppercase;
+              font-family: &quot;Nunito Sans&quot;, sans-serif;
+            "
+          >
+            Continuer → Paiement
+          </button>
+        </div>
+
+        <!-- Panel 2 : Paiement -->
+        <div
+          class="rpanel"
+          id="rpanel2"
+          style="padding: 1.5rem 1.8rem; display: none"
+        >
+          <!-- Résumé montant -->
+          <div id="rpay-summary" style="background:rgba(200,146,42,0.08);border:1px solid rgba(200,146,42,0.2);border-radius:6px;padding:0.8rem 1rem;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.75rem;color:#8a7060;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">Montant à régler</span>
+            <span id="rpay-total" style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#c8922a;font-weight:600;">—</span>
+          </div>
+
+          <p style="font-size:0.8rem;color:#8a7060;margin-bottom:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">Choisissez votre mode de paiement</p>
+
+          <!-- Liste des options -->
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:1.2rem;">
+            <div class="rpay-opt selected" onclick="selectResPay(this,'om')" id="rpay-om">
+              <div class="rpay-logo" style="background:#ff6600;font-size:0.68rem;font-weight:900;">OM</div>
+              <div><h4>Orange Money</h4><p>Paiement instantané via USSD</p></div>
+              <div class="rpay-check">✓</div>
+            </div>
+            <div class="rpay-opt" onclick="selectResPay(this,'wave')">
+              <div class="rpay-logo" style="background:#1a73e8;font-size:0.65rem;font-weight:900;">Wave</div>
+              <div><h4>Wave</h4><p>Zéro frais · Lien direct</p></div>
+              <div class="rpay-check"></div>
+            </div>
+            <div class="rpay-opt" onclick="selectResPay(this,'moov')">
+              <div class="rpay-logo" style="background:#0066cc;font-size:0.65rem;font-weight:900;">Moov</div>
+              <div><h4>Moov Money</h4><p>Paiement via USSD</p></div>
+              <div class="rpay-check"></div>
+            </div>
+            <div class="rpay-opt" onclick="selectResPay(this,'telecel')">
+              <div class="rpay-logo" style="background:#e60026;font-size:0.6rem;font-weight:900;">TCel</div>
+              <div><h4>Télécel Money</h4><p>Paiement via USSD</p></div>
+              <div class="rpay-check"></div>
+            </div>
+            <div class="rpay-opt" onclick="selectResPay(this,'visa')">
+              <div class="rpay-logo" style="background:linear-gradient(135deg,#1a1f71,#2563eb);font-size:0.6rem;font-weight:900;">VISA</div>
+              <div><h4>Carte bancaire</h4><p>Visa / Mastercard</p></div>
+              <div class="rpay-check"></div>
+            </div>
+            <div class="rpay-opt" onclick="selectResPay(this,'cash')">
+              <div class="rpay-logo" style="background:#2d9b4e;font-size:1.1rem;">💵</div>
+              <div><h4>Espèces à l'arrivée</h4><p>Payer au check-in</p></div>
+              <div class="rpay-check"></div>
+            </div>
+          </div>
+
+          <!-- ── Instructions Orange Money ── -->
+          <div id="rom-inst" class="rpay-inst" style="background:rgba(255,102,0,0.06);border:1px solid rgba(255,102,0,0.2);border-radius:8px;padding:1rem;margin-bottom:1rem;">
+            <div style="font-weight:800;color:#ff6600;font-size:0.78rem;margin-bottom:10px;">📱 Payer avec Orange Money</div>
+            <div style="background:#fff7f0;border-radius:6px;padding:10px;margin-bottom:8px;font-size:0.78rem;color:#2c1a0e;line-height:1.7;">
+              <strong>Option 1 — USSD :</strong> Composez sur votre téléphone :<br>
+              <code id="rom-ussd" style="font-size:1rem;font-weight:900;color:#ff6600;display:block;margin:4px 0;">*144*3*XXXXXXXX*MONTANT#</code>
+              <strong>Option 2 — Virement :</strong> Envoyez au numéro ci-dessous.
+            </div>
+            <a id="rom-btn" href="#" style="display:flex;align-items:center;justify-content:center;background:#ff6600;color:white;padding:11px;border-radius:4px;font-weight:800;font-size:0.8rem;text-decoration:none;margin-bottom:8px;gap:8px;">
+              📞 Lancer le paiement Orange Money
+            </a>
+            <div style="background:#ff6600;color:white;padding:8px 12px;border-radius:4px;text-align:center;font-size:1rem;font-weight:900;letter-spacing:0.1em;">
+              <span style="display:block;font-size:0.6rem;opacity:0.8;margin-bottom:2px;text-transform:uppercase;letter-spacing:0.15em;">Numéro Orange Money</span>
+              +226 XX XX XX XX
+            </div>
+          </div>
+
+          <!-- ── Instructions Wave ── -->
+          <div id="rwave-inst" class="rpay-inst" style="display:none;background:rgba(26,115,232,0.06);border:1px solid rgba(26,115,232,0.2);border-radius:8px;padding:1rem;margin-bottom:1rem;">
+            <div style="font-weight:800;color:#1a73e8;font-size:0.78rem;margin-bottom:10px;">🌊 Payer avec Wave</div>
+            <div style="background:#f0f5ff;border-radius:6px;padding:10px;margin-bottom:8px;font-size:0.78rem;color:#2c1a0e;line-height:1.7;">
+              Cliquez le bouton ci-dessous pour ouvrir l'application Wave avec le montant pré-rempli, ou envoyez directement au numéro Wave de l'hôtel.
+            </div>
+            <a id="rwave-btn" href="#" target="_blank" style="display:flex;align-items:center;justify-content:center;background:#1a73e8;color:white;padding:11px;border-radius:4px;font-weight:800;font-size:0.8rem;text-decoration:none;margin-bottom:8px;gap:8px;">
+              🌊 Ouvrir Wave — Payer maintenant
+            </a>
+            <div style="background:#1a73e8;color:white;padding:8px 12px;border-radius:4px;text-align:center;font-size:1rem;font-weight:900;letter-spacing:0.1em;">
+              <span style="display:block;font-size:0.6rem;opacity:0.8;margin-bottom:2px;text-transform:uppercase;">Numéro Wave</span>
+              +226 XX XX XX XX
+            </div>
+          </div>
+
+          <!-- ── Instructions Moov Money ── -->
+          <div id="rmoov-inst" class="rpay-inst" style="display:none;background:rgba(0,102,204,0.06);border:1px solid rgba(0,102,204,0.2);border-radius:8px;padding:1rem;margin-bottom:1rem;">
+            <div style="font-weight:800;color:#0066cc;font-size:0.78rem;margin-bottom:10px;">📱 Payer avec Moov Money</div>
+            <div style="background:#f0f6ff;border-radius:6px;padding:10px;margin-bottom:8px;font-size:0.78rem;color:#2c1a0e;line-height:1.7;">
+              <strong>USSD :</strong> Composez sur votre téléphone :<br>
+              <code id="rmoov-ussd" style="font-size:1rem;font-weight:900;color:#0066cc;display:block;margin:4px 0;">*555*XXXXXXXX*MONTANT#</code>
+              Ou envoyez directement au numéro Moov Money de l'hôtel.
+            </div>
+            <a id="rmoov-btn" href="#" style="display:flex;align-items:center;justify-content:center;background:#0066cc;color:white;padding:11px;border-radius:4px;font-weight:800;font-size:0.8rem;text-decoration:none;gap:8px;">
+              📞 Lancer le paiement Moov Money
+            </a>
+          </div>
+
+          <!-- ── Instructions Télécel Money ── -->
+          <div id="rtelecel-inst" class="rpay-inst" style="display:none;background:rgba(230,0,38,0.06);border:1px solid rgba(230,0,38,0.2);border-radius:8px;padding:1rem;margin-bottom:1rem;">
+            <div style="font-weight:800;color:#e60026;font-size:0.78rem;margin-bottom:10px;">📱 Payer avec Télécel Money</div>
+            <div style="background:#fff0f2;border-radius:6px;padding:10px;margin-bottom:8px;font-size:0.78rem;color:#2c1a0e;line-height:1.7;">
+              <strong>USSD :</strong> Composez sur votre téléphone :<br>
+              <code id="rtelecel-ussd" style="font-size:1rem;font-weight:900;color:#e60026;display:block;margin:4px 0;">*155*XXXXXXXX*MONTANT#</code>
+              Ou envoyez directement au numéro Télécel Money de l'hôtel.
+            </div>
+            <a id="rtelecel-btn" href="#" style="display:flex;align-items:center;justify-content:center;background:#e60026;color:white;padding:11px;border-radius:4px;font-weight:800;font-size:0.8rem;text-decoration:none;gap:8px;">
+              📞 Lancer le paiement Télécel Money
+            </a>
+          </div>
+
+          <!-- ── Carte bancaire Visa / Mastercard ── -->
+          <div id="rvisa-inst" class="rpay-inst" style="display:none;background:rgba(26,31,113,0.04);border:1px solid rgba(37,99,235,0.2);border-radius:8px;padding:1rem;margin-bottom:1rem;">
+            <div style="font-weight:800;color:#1a1f71;font-size:0.78rem;margin-bottom:10px;">💳 Paiement par carte bancaire</div>
+            <div style="background:#f4f6ff;border-radius:6px;padding:10px;margin-bottom:12px;font-size:0.78rem;color:#2c1a0e;line-height:1.7;">
+              Votre réservation sera enregistrée. Notre équipe vous contactera dans les <strong>2 heures</strong> pour finaliser le paiement par carte de façon sécurisée.
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+              <div class="rfield" style="grid-column:1/-1;">
+                <label>Nom du titulaire</label>
+                <input type="text" id="visa-nom" placeholder="NOM PRÉNOM (comme sur la carte)" style="text-transform:uppercase;" />
+              </div>
+              <div class="rfield" style="grid-column:1/-1;">
+                <label>Numéro de carte</label>
+                <input type="text" id="visa-numero" placeholder="•••• •••• •••• ••••" maxlength="19" oninput="formatCard(this)" />
+              </div>
+              <div class="rfield">
+                <label>Expiration (MM/AA)</label>
+                <input type="text" id="visa-expiry" placeholder="MM/AA" maxlength="5" oninput="formatExpiry(this)" />
+              </div>
+              <div class="rfield">
+                <label>CVV</label>
+                <input type="text" id="visa-cvv" placeholder="•••" maxlength="4" />
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:0.72rem;color:#8a7060;">
+              🔒 <span>Vos données sont transmises de façon confidentielle à notre équipe.</span>
+            </div>
+          </div>
+
+          <!-- ── Espèces à l'arrivée ── -->
+          <div id="rcash-inst" class="rpay-inst" style="display:none;background:rgba(45,155,78,0.06);border:1px solid rgba(45,155,78,0.2);border-radius:8px;padding:1rem;margin-bottom:1rem;">
+            <div style="font-weight:800;color:#2d9b4e;font-size:0.78rem;margin-bottom:6px;">💵 Paiement en espèces à l'arrivée</div>
+            <p style="font-size:0.78rem;color:#2c1a0e;line-height:1.7;">
+              Votre réservation est garantie. Vous réglez en espèces (FCFA) à votre arrivée au lodge. Préparez le montant exact indiqué ci-dessus.
+            </p>
+          </div>
+
+          <div style="display:flex;gap:10px;margin-top:1rem;">
+            <button onclick="goResStep(1)" style="background:rgba(0,0,0,0.06);border:none;border-radius:4px;padding:14px 20px;font-size:0.82rem;cursor:pointer;font-family:'Nunito Sans',sans-serif;">
+              ← Retour
+            </button>
+            <button id="rbtn-paid" onclick="confirmReservation()" style="flex:1;background:#25d366;color:white;border:none;border-radius:4px;padding:14px;font-size:0.82rem;font-weight:700;cursor:pointer;letter-spacing:0.1em;text-transform:uppercase;font-family:'Nunito Sans',sans-serif;display:none;">
+              ✅ Confirmer ma réservation
+            </button>
+            <button id="rbtn-pay" onclick="prepareResPay()" style="flex:1;background:#c8922a;color:#2c1a0e;border:none;border-radius:4px;padding:14px;font-size:0.82rem;font-weight:700;cursor:pointer;letter-spacing:0.1em;text-transform:uppercase;font-family:'Nunito Sans',sans-serif;">
+              💳 Procéder au paiement
+            </button>
+          </div>
+        </div>
+
+        <!-- Panel 3 : Confirmé -->
+        <div
+          class="rpanel"
+          id="rpanel3"
+          style="padding: 2rem 1.8rem; text-align: center; display: none"
+        >
+          <span
+            style="
+              font-size: 4rem;
+              display: block;
+              margin-bottom: 1rem;
+              animation: popIn 0.4s ease;
+            "
+            >🎉</span
+          >
+          <h3
+            style="
+              font-family: &quot;Cormorant Garamond&quot;, serif;
+              font-size: 2rem;
+              color: #2c1a0e;
+              font-style: italic;
+              margin-bottom: 0.5rem;
+            "
+          >
+            Réservation confirmée !
+          </h3>
+          <div
+            id="r-ref-box"
+            style="
+              background: rgba(200, 146, 42, 0.1);
+              border: 1px solid rgba(200, 146, 42, 0.2);
+              border-radius: 4px;
+              padding: 0.8rem;
+              margin: 1rem 0;
+              font-family: &quot;Cormorant Garamond&quot;, serif;
+              font-size: 1.1rem;
+              color: #c8922a;
+              font-weight: 600;
+            "
+          ></div>
+          <p
+            style="
+              font-size: 0.85rem;
+              color: #8a7060;
+              line-height: 1.7;
+              margin-bottom: 0.5rem;
+            "
+          >
+            Merci <strong id="r-conf-nom"></strong> ! Votre réservation au Tenko
+            Lodge est bien enregistrée. Notre équipe vous contacte dans les
+            <strong>2 heures</strong>.
+          </p>
+          <a
+            id="r-wa-link"
+            href="#"
+            target="_blank"
+            style="
+              display: inline-flex;
+              align-items: center;
+              gap: 8px;
+              background: #25d366;
+              color: white;
+              padding: 12px 24px;
+              border-radius: 4px;
+              text-decoration: none;
+              font-weight: 700;
+              font-size: 0.82rem;
+              margin-top: 1rem;
+            "
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+              />
+            </svg>
+            Suivre sur WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      @keyframes slideUp {
+        from {
+          transform: translateY(100%);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+      @keyframes popIn {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      #res-overlay.open {
+        display: flex;
+      }
+      .res-step .rsnum {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(200, 146, 42, 0.15);
+        color: #8a7060;
+        font-size: 0.75rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 4px;
+        border: 1px solid rgba(200, 146, 42, 0.2);
+        transition: all 0.3s;
+        font-family: "Nunito Sans", sans-serif;
+      }
+      .res-step .rslbl {
+        font-size: 0.6rem;
+        color: #8a7060;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .res-step.active .rsnum {
+        background: #c8922a;
+        color: #2c1a0e;
+        border-color: #c8922a;
+      }
+      .res-step.done .rsnum {
+        background: #25d366;
+        color: white;
+        border-color: #25d366;
+      }
+      .rpanel {
+        display: none;
+      }
+      .rpanel.active {
+        display: block;
+      }
+      .rfield {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 0;
+      }
+      .rfield label {
+        font-size: 0.62rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #8a7060;
+        font-weight: 700;
+      }
+      .rfield input,
+      .rfield select {
+        background: white;
+        border: 1px solid rgba(200, 146, 42, 0.2);
+        color: #2c1a0e;
+        padding: 0.75rem 1rem;
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 0.88rem;
+        border-radius: 4px;
+        outline: none;
+        transition: border-color 0.2s;
+        width: 100%;
+      }
+      .rfield input:focus,
+      .rfield select:focus {
+        border-color: #c8922a;
+      }
+      .rfield input::placeholder {
+        color: #8a7060;
+      }
+      .rfield select option {
+        background: white;
+      }
+      .rpay-opt {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 14px;
+        border: 2px solid rgba(200, 146, 42, 0.12);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        background: white;
+      }
+      .rpay-opt:hover {
+        border-color: rgba(200, 146, 42, 0.3);
+      }
+      .rpay-opt.selected {
+        border-color: #c8922a;
+        background: rgba(200, 146, 42, 0.04);
+      }
+      .rpay-logo {
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 0.75rem;
+        color: white;
+      }
+      .rpay-opt h4 {
+        font-weight: 700;
+        color: #2c1a0e;
+        font-size: 0.88rem;
+        margin-bottom: 2px;
+      }
+      .rpay-opt p {
+        font-size: 0.72rem;
+        color: #8a7060;
+        font-weight: 300;
+      }
+      .rpay-check {
+        margin-left: auto;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid rgba(200, 146, 42, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: all 0.2s;
+        font-size: 0.7rem;
+      }
+      .rpay-opt.selected .rpay-check {
+        background: #c8922a;
+        border-color: #c8922a;
+        color: white;
+      }
+    </style>
+
+    <!-- RÉSERVATION (section page) -->
+    <section class="reservation" id="reservation">
+      <div class="reservation-inner">
+        <div class="sec-eyebrow" style="justify-content: center">
+          Réservez votre séjour
+        </div>
+        <h2 class="sec-title">
+          Réservez <em>directement</em><br />sans commission
+        </h2>
+        <p class="res-sub">
+          Évitez les intermédiaires et bénéficiez du meilleur tarif en réservant
+          directement avec nous.
+        </p>
+
+        <div class="res-form">
+          <div class="res-field">
+            <label>Arrivée</label>
+            <input type="date" id="arrival" />
+          </div>
+          <div class="res-field">
+            <label>Départ</label>
+            <input type="date" id="departure" />
+          </div>
+          <div class="res-field">
+            <label>Type de chambre</label>
+            <select id="room-type">
+              <option value="">Choisir...</option>
+              <option>Chambre Confort — 35 000 FCFA</option>
+              <option>Chambre Supérieure — 55 000 FCFA</option>
+              <option>Suite Présidentielle — 85 000 FCFA</option>
+            </select>
+          </div>
+          <button class="res-btn" onclick="openRes()">Réserver →</button>
+        </div>
+
+        <div class="res-or">ou réservez via</div>
+
+        <a
+          href="https://wa.me/22600000000?text=Bonjour, je souhaite réserver une chambre au Tenko Lodge."
+          class="res-wa"
+          target="_blank"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+            />
+          </svg>
+          Réserver via WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div>
+        <div class="sec-eyebrow">Nous trouver</div>
+        <h2 class="sec-title">Venez nous<br /><em>rendre visite</em></h2>
+        <div class="contact-infos">
+          <div class="contact-info">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">Adresse</div>
+              <div class="ci-value">
+                Zone du Bois, Ouagadougou<br />Burkina Faso
+              </div>
+            </div>
+          </div>
+          <div class="contact-info">
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-label">Téléphone</div>
+              <div class="ci-value">+226 XX XX XX XX</div>
+            </div>
+          </div>
+          <div class="contact-info">
+            <div class="ci-icon">✉️</div>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-value">contact@tenkolodge.bf</div>
+            </div>
+          </div>
+          <div class="contact-info">
+            <div class="ci-icon">🕐</div>
+            <div>
+              <div class="ci-label">Réception</div>
+              <div class="ci-value">Ouverte 24h/24 — 7j/7</div>
+            </div>
+          </div>
+          <div class="contact-info">
+            <div class="ci-icon">✈️</div>
+            <div>
+              <div class="ci-label">Aéroport</div>
+              <div class="ci-value">
+                À 4 km — Navette disponible sur demande
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-map">
+        <div class="map-placeholder">🗺️</div>
+        <div class="map-info">
+          Zone du Bois, Ouagadougou<br />
+          À 1,8 km du Musée National du Burkina Faso<br />
+          À 4 km de l'Aéroport International
+        </div>
+        <a
+          href="https://maps.google.com/?q=Tenko+Lodge+Ouagadougou"
+          target="_blank"
+          class="map-btn"
+        >
+          Ouvrir dans Maps →
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">Ten<span>ko</span> Lodge</div>
+      <div class="footer-copy">
+        © 2025 Tenko Lodge · Ouagadougou, Burkina Faso
+      </div>
+      <div class="footer-links">
+        <a href="#rooms">Chambres</a>
+        <a href="#amenities">Équipements</a>
+        <a href="#reservation">Réserver</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Flottant -->
+    <a href="https://wa.me/22600000000" class="wa-float" target="_blank">💬</a>
+
+    <script>
+      // ── MODAL RÉSERVATION ──
+
+      function openRes() {
+        // Pré-remplir depuis le formulaire rapide de la page
+        const arrival  = document.getElementById('arrival').value;
+        const departure = document.getElementById('departure').value;
+        const roomType  = document.getElementById('room-type').value;
+        if (arrival)   document.getElementById('r-arrivee').value = arrival;
+        if (departure) document.getElementById('r-depart').value  = departure;
+        if (roomType) {
+          const map = {
+            'Chambre Confort — 35 000 FCFA':      'confort',
+            'Chambre Supérieure — 55 000 FCFA':   'superieure',
+            'Suite Présidentielle — 85 000 FCFA': 'suite'
+          };
+          const val = map[roomType];
+          if (val) document.getElementById('r-chambre').value = val;
+        }
+        const ov = document.getElementById('res-overlay');
+        ov.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        goResStep(1);
+        updateTotal();
+      }
+
+      function closeRes() {
+        document.getElementById('res-overlay').style.display = 'none';
+        document.body.style.overflow = '';
+      }
+
+      // Fermer le modal en cliquant sur le fond
+      document.getElementById('res-overlay').addEventListener('click', function(e) {
+        if (e.target === this) closeRes();
+      });
+
+      let resPayMethod = 'om';
+
+      function goResStep(n) {
+        // Validation avant de passer à l'étape paiement
+        if (n === 2) {
+          const nom    = document.getElementById('r-nom').value.trim();
+          const tel    = document.getElementById('r-tel').value.trim();
+          const chambre = document.getElementById('r-chambre').value;
+          const arrivee = document.getElementById('r-arrivee').value;
+          const depart  = document.getElementById('r-depart').value;
+          if (!nom)    { alert('Veuillez entrer votre nom complet.'); return; }
+          if (!tel)    { alert('Veuillez entrer votre numéro de téléphone.'); return; }
+          if (!chambre){ alert('Veuillez choisir un type de chambre.'); return; }
+          if (!arrivee){ alert('Veuillez choisir une date d\'arrivée.'); return; }
+          if (!depart) { alert('Veuillez choisir une date de départ.'); return; }
+          const today = new Date(); today.setHours(0,0,0,0);
+          if (new Date(arrivee) < today) { alert('La date d\'arrivée ne peut pas être dans le passé.'); return; }
+          if (new Date(depart) <= new Date(arrivee)) { alert('La date de départ doit être après la date d\'arrivée.'); return; }
+        }
+        document.querySelectorAll('.rpanel').forEach((p, i) => {
+          p.style.display = i + 1 === n ? 'block' : 'none';
+        });
+        document.querySelectorAll('.res-step').forEach((s, i) => {
+          s.classList.toggle('active', i + 1 === n);
+          s.classList.toggle('done', i + 1 < n);
+        });
+        if (n === 2) updatePayTotal();
+      }
+
+      function updateTotal() {
+        const chambre = document.getElementById('r-chambre').value;
+        const arrivee = document.getElementById('r-arrivee').value;
+        const depart  = document.getElementById('r-depart').value;
+        const prix = { confort: 35000, superieure: 55000, suite: 85000 };
+        const box  = document.getElementById('r-total-box');
+        if (chambre && arrivee && depart && new Date(depart) > new Date(arrivee)) {
+          const nuits = Math.max(1, Math.round((new Date(depart) - new Date(arrivee)) / 86400000));
+          const total = (prix[chambre] || 35000) * nuits;
+          box.style.display = 'flex';
+          document.getElementById('r-total-val').textContent =
+            total.toLocaleString('fr-FR') + ' FCFA (' + nuits + ' nuit' + (nuits > 1 ? 's' : '') + ')';
+        } else {
+          box.style.display = 'none';
+        }
+      }
+
+      // Numéros de l'hôtel — à remplacer par les vrais numéros
+      const HOTEL_NUMS = {
+        om:      '+22600000000',
+        wave:    '+22600000000',
+        moov:    '+22600000000',
+        telecel: '+22600000000'
+      };
+      const WAVE_LINK = 'https://pay.wave.com/m/M_OfXqxGDnSX3U/c/bf/';
+
+      function getTotal() {
+        const chambre = document.getElementById('r-chambre').value;
+        const arrivee = document.getElementById('r-arrivee').value;
+        const depart  = document.getElementById('r-depart').value;
+        const prix = { confort: 35000, superieure: 55000, suite: 85000 };
+        const nuits = Math.max(1, Math.round((new Date(depart) - new Date(arrivee)) / 86400000));
+        return { total: (prix[chambre] || 35000) * nuits, nuits };
+      }
+
+      function updatePayTotal() {
+        const { total, nuits } = getTotal();
+        const num = HOTEL_NUMS.om.replace('+226', '').replace(/\s/g, '');
+
+        // Résumé en haut du panel
+        const el = document.getElementById('rpay-total');
+        if (el) el.textContent = total.toLocaleString('fr-FR') + ' FCFA · ' + nuits + ' nuit' + (nuits > 1 ? 's' : '');
+
+        // Orange Money
+        const omUssd = '*144*3*' + num + '*' + total + '#';
+        document.getElementById('rom-ussd').textContent = omUssd;
+        document.getElementById('rom-btn').href = 'tel:' + encodeURIComponent(omUssd);
+
+        // Wave
+        document.getElementById('rwave-btn').href = WAVE_LINK + '?amount=' + total;
+
+        // Moov Money
+        const moovNum = HOTEL_NUMS.moov.replace('+226', '').replace(/\s/g, '');
+        const moovUssd = '*555*' + moovNum + '*' + total + '#';
+        document.getElementById('rmoov-ussd').textContent = moovUssd;
+        document.getElementById('rmoov-btn').href = 'tel:' + encodeURIComponent(moovUssd);
+
+        // Télécel Money
+        const tcelNum = HOTEL_NUMS.telecel.replace('+226', '').replace(/\s/g, '');
+        const tcelUssd = '*155*' + tcelNum + '*' + total + '#';
+        document.getElementById('rtelecel-ussd').textContent = tcelUssd;
+        document.getElementById('rtelecel-btn').href = 'tel:' + encodeURIComponent(tcelUssd);
+      }
+
+      function selectResPay(el, method) {
+        document.querySelectorAll('.rpay-opt').forEach(o => {
+          o.classList.remove('selected');
+          o.querySelector('.rpay-check').textContent = '';
+        });
+        el.classList.add('selected');
+        el.querySelector('.rpay-check').textContent = '✓';
+        resPayMethod = method;
+
+        document.querySelectorAll('.rpay-inst').forEach(i => i.style.display = 'none');
+        const inst = document.getElementById('r' + method + '-inst');
+        if (inst) inst.style.display = 'block';
+
+        // Cash et Visa : bouton "Confirmer" directement ; sinon : "Procéder au paiement"
+        const skipPay = method === 'cash' || method === 'visa';
+        document.getElementById('rbtn-pay').style.display  = skipPay ? 'none'  : 'block';
+        document.getElementById('rbtn-paid').style.display = skipPay ? 'block' : 'none';
+      }
+
+      function prepareResPay() {
+        updatePayTotal();
+        const { total } = getTotal();
+        const num = HOTEL_NUMS.om.replace('+226', '').replace(/\s/g, '');
+        if      (resPayMethod === 'om')      window.location.href = 'tel:' + encodeURIComponent('*144*3*' + num + '*' + total + '#');
+        else if (resPayMethod === 'wave')    window.open(WAVE_LINK + '?amount=' + total, '_blank');
+        else if (resPayMethod === 'moov')    window.location.href = 'tel:' + encodeURIComponent('*555*' + num + '*' + total + '#');
+        else if (resPayMethod === 'telecel') window.location.href = 'tel:' + encodeURIComponent('*155*' + num + '*' + total + '#');
+
+        // Après 2 s, afficher "J'ai payé — Confirmer"
+        setTimeout(() => {
+          document.getElementById('rbtn-pay').style.display  = 'none';
+          document.getElementById('rbtn-paid').style.display = 'block';
+        }, 2000);
+      }
+
+      // Formatage numéro de carte : 1234 5678 9012 3456
+      function formatCard(input) {
+        let v = input.value.replace(/\D/g, '').substring(0, 16);
+        input.value = v.replace(/(.{4})/g, '$1 ').trim();
+      }
+
+      // Formatage expiration : MM/AA
+      function formatExpiry(input) {
+        let v = input.value.replace(/\D/g, '').substring(0, 4);
+        if (v.length >= 3) v = v.substring(0, 2) + '/' + v.substring(2);
+        input.value = v;
+      }
+
+      async function confirmReservation() {
+        const nom     = document.getElementById('r-nom').value.trim() || 'Client';
+        const tel     = document.getElementById('r-tel').value.trim();
+        const email   = document.getElementById('r-email').value.trim();
+        const chambre = document.getElementById('r-chambre').value || 'confort';
+        const arrivee = document.getElementById('r-arrivee').value;
+        const depart  = document.getElementById('r-depart').value;
+        const pers    = document.getElementById('r-pers').value || 1;
+        const notes   = document.getElementById('r-notes').value;
+        const prix    = { confort: 35000, superieure: 55000, suite: 85000 };
+        const nuits   = Math.max(1, Math.round((new Date(depart) - new Date(arrivee)) / 86400000));
+        const total   = (prix[chambre] || 35000) * nuits;
+
+        const SERVER = window.location.hostname === 'localhost'
+          ? 'http://localhost:3001'
+          : 'http://' + window.location.hostname + ':3001';
+
+        // Désactiver le bouton pendant l'envoi
+        const btn = document.getElementById('rbtn-paid');
+        btn.disabled = true;
+        btn.textContent = 'Envoi en cours...';
+
+        try {
+          const res = await fetch(SERVER + '/api/reservations', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              client_nom: nom, client_telephone: tel,
+              client_email: email, type_chambre: chambre,
+              date_arrivee: arrivee, date_depart: depart,
+              nb_personnes: pers, montant_total: total, notes: notes
+            })
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.erreur || 'Erreur serveur');
+          const ref = data.reference || 'TENKO-' + Math.floor(1000 + Math.random() * 9000);
+
+          document.getElementById('r-conf-nom').textContent  = nom;
+          document.getElementById('r-ref-box').textContent   = 'Réf : #' + ref;
+
+          const payLabels = {
+            om: 'Orange Money', wave: 'Wave', moov: 'Moov Money',
+            telecel: 'Télécel Money', visa: 'Carte bancaire (Visa/Mastercard)',
+            cash: 'Espèces à l\'arrivée'
+          };
+          const chambreLabels = { confort: 'Chambre Confort', superieure: 'Chambre Supérieure', suite: 'Suite Présidentielle' };
+
+          // Inclure les infos carte si paiement Visa
+          let visaInfo = '';
+          if (resPayMethod === 'visa') {
+            const vNom    = document.getElementById('visa-nom').value.trim();
+            const vNum    = document.getElementById('visa-numero').value.trim();
+            const vExpiry = document.getElementById('visa-expiry').value.trim();
+            if (vNom || vNum) {
+              visaInfo = '%0A💳 Carte : ' + (vNum ? vNum.replace(/\d(?=\d{4})/g,'•') : '—')
+                + ' · Exp : ' + (vExpiry || '—')
+                + ' · Titulaire : ' + (vNom || '—');
+            }
+          }
+
+          const waMsg = 'Bonjour, je viens de réserver au Tenko Lodge.%0A%0A'
+            + '📋 Réf : ' + ref + '%0A'
+            + '👤 Nom : ' + nom + '%0A'
+            + '🛏️ Chambre : ' + (chambreLabels[chambre] || chambre) + '%0A'
+            + '📅 Arrivée : ' + arrivee + '%0A'
+            + '📅 Départ : ' + depart + '%0A'
+            + '👥 Personnes : ' + pers + '%0A'
+            + '💰 Total : ' + total.toLocaleString('fr-FR') + ' FCFA (' + nuits + ' nuit' + (nuits > 1 ? 's' : '') + ')%0A'
+            + '💳 Paiement : ' + (payLabels[resPayMethod] || resPayMethod)
+            + visaInfo + '%0A%0A'
+            + (resPayMethod === 'cash' || resPayMethod === 'visa' ? '⏳ En attente de confirmation.' : '✅ Paiement effectué.');
+          document.getElementById('r-wa-link').href = 'https://wa.me/22600000000?text=' + waMsg;
+
+          goResStep(3);
+        } catch (err) {
+          console.error('Erreur:', err);
+          alert('Erreur : ' + err.message + '\nVérifiez que le serveur tourne.');
+          btn.disabled = false;
+          btn.textContent = '✅ J\'ai payé — Confirmer';
+        }
+      }
+
+      // ── FORMULAIRE RAPIDE (section réservation) ──
+
+      function reserverWA() {
+        const arrival  = document.getElementById('arrival').value;
+        const departure = document.getElementById('departure').value;
+        const roomType  = document.getElementById('room-type').value;
+        let msg = 'Bonjour, je souhaite réserver une chambre au Tenko Lodge.';
+        if (arrival)   msg += '%0AArrivée : ' + arrival;
+        if (departure) msg += '%0ADépart : ' + departure;
+        if (roomType)  msg += '%0AType : ' + roomType;
+        window.open('https://wa.me/22600000000?text=' + msg, '_blank');
+      }
+
+      // ── MENU HAMBURGER MOBILE ──
+
+      function toggleMobileMenu() {
+        const links = document.getElementById('nav-links');
+        links.classList.toggle('mobile-open');
+      }
+
+      // Fermer le menu mobile quand on clique un lien
+      document.querySelectorAll('#nav-links a').forEach(a => {
+        a.addEventListener('click', () => {
+          document.getElementById('nav-links').classList.remove('mobile-open');
+        });
+      });
+
+      // ── SMOOTH SCROLL ──
+
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          const href = a.getAttribute('href');
+          if (!href || href === '#') return;
+          try {
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          } catch (err) {}
+        });
+      });
+    </script>
+  </body>
+</html>
